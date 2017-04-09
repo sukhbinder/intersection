@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 Sukhbinder
 5 April 2017
 
-Based on: 
+Based on:
 """
 
-def rectangle_intersection_(x1,y1,x2,y2):
+def _rectangle_intersection_(x1,y1,x2,y2):
     n1=x1.shape[0]-1
     n2=x2.shape[0]-1
     S1=np.tile(np.c_[x1[:-1],x1[1:]].min(axis=1),(n2,1)).T
@@ -50,9 +50,9 @@ x,y=intersection(x1,y1,x2,y2)
     plt.plot(x2,y2,c='g')
     plt.plot(x,y,'*k')
     plt.show()
-    
+
     """
-    ii,jj=rectangle_intersection_(x1,y1,x2,y2)
+    ii,jj=_rectangle_intersection_(x1,y1,x2,y2)
     n=len(ii)
 
     dxy1=np.diff(np.c_[x1,y1],axis=0)
@@ -60,12 +60,17 @@ x,y=intersection(x1,y1,x2,y2)
 
     T=np.zeros((4,n))
     AA=np.zeros((4,4,n))
-    for i in range(n):
-        aview=AA[:,:,i]
-        aview[np.ix_([0,1],[2])]=-1
-        aview[np.ix_([2,3],[3])]=-1
-        aview[np.ix_([0,2],[0])]=dxy1[ii[i],:][:,np.newaxis]
-        aview[np.ix_([1,3],[1])]=dxy2[jj[i],:][:,np.newaxis]
+    # for i in range(n):
+    #     aview=AA[:,:,i]
+    #     aview[np.ix_([0,1],[2])]=-1
+    #     aview[np.ix_([2,3],[3])]=-1
+    #     aview[np.ix_([0,2],[0])]=dxy1[ii[i],:][:,np.newaxis]
+    #     aview[np.ix_([1,3],[1])]=dxy2[jj[i],:][:,np.newaxis]
+
+    AA[0:2,2,:]=-1
+    AA[2:4,3,:]=-1
+    AA[0::2,0,:]=dxy1[ii,:].T
+    AA[1::2,1,:]=dxy2[jj,:].T
 
     BB=np.zeros((4,n))
     BB[0,:]=-x1[ii].ravel()
@@ -78,7 +83,7 @@ x,y=intersection(x1,y1,x2,y2)
             T[:,i]=np.linalg.solve(AA[:,:,i],BB[:,i])
         except:
             T[:,i]=np.NaN
-        
+
 
     in_range= (T[0,:] >=0) & (T[1,:] >=0) & (T[0,:] <=1) & (T[1,:] <=1)
 
@@ -89,7 +94,7 @@ x,y=intersection(x1,y1,x2,y2)
 
 if __name__ == '__main__':
 
-    # a piece of a prolate cycloid, and am going to find 
+    # a piece of a prolate cycloid, and am going to find
     a, b = 1, 2
     phi = np.linspace(3, 10, 100)
     x1 = a*phi - b*np.sin(phi)
@@ -102,4 +107,3 @@ if __name__ == '__main__':
     plt.plot(x2,y2,c='g')
     plt.plot(x,y,'*k')
     plt.show()
-
