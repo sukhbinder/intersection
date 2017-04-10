@@ -9,7 +9,6 @@ Inspired from [this](http://uk.mathworks.com/matlabcentral/fileexchange/11837-fa
 ##Example usage
 
 '''python
-
 a, b = 1, 2
 phi = np.linspace(3, 10, 100)
 x1 = a*phi - b*np.sin(phi)
@@ -22,6 +21,4 @@ plt.plot(x1,y1,c="r")
 plt.plot(x2,y2,c="g")
 plt.plot(x,y,"*k")
 plt.show()
-
-
 '''
