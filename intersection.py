@@ -60,13 +60,6 @@ x,y=intersection(x1,y1,x2,y2)
 
     T=np.zeros((4,n))
     AA=np.zeros((4,4,n))
-    # for i in range(n):
-    #     aview=AA[:,:,i]
-    #     aview[np.ix_([0,1],[2])]=-1
-    #     aview[np.ix_([2,3],[3])]=-1
-    #     aview[np.ix_([0,2],[0])]=dxy1[ii[i],:][:,np.newaxis]
-    #     aview[np.ix_([1,3],[1])]=dxy2[jj[i],:][:,np.newaxis]
-
     AA[0:2,2,:]=-1
     AA[2:4,3,:]=-1
     AA[0::2,0,:]=dxy1[ii,:].T
