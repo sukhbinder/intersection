@@ -7,17 +7,20 @@ Sukhbinder
 Based on:
 """
 
-def _rectangle_intersection_(x1,y1,x2,y2):
+def _rect_inter_inner(x1,x2):
     n1=x1.shape[0]-1
     n2=x2.shape[0]-1
-    S1=np.tile(np.c_[x1[:-1],x1[1:]].min(axis=1),(n2,1)).T
-    S2=np.tile(np.c_[x2[:-1],x2[1:]].max(axis=1),(n1,1))
-    S3=np.tile(np.c_[x1[:-1],x1[1:]].max(axis=1),(n2,1)).T
-    S4=np.tile(np.c_[x2[:-1],x2[1:]].min(axis=1),(n1,1))
-    S5=np.tile(np.c_[y1[:-1],y1[1:]].min(axis=1),(n2,1)).T
-    S6=np.tile(np.c_[y2[:-1],y2[1:]].max(axis=1),(n1,1))
-    S7=np.tile(np.c_[y1[:-1],y1[1:]].max(axis=1),(n2,1)).T
-    S8=np.tile(np.c_[y2[:-1],y2[1:]].min(axis=1),(n1,1))
+    X1=np.c_[x1[:-1],x1[1:]]
+    X2=np.c_[x2[:-1],x2[1:]]
+    S1=np.tile(X1.min(axis=1),(n2,1)).T
+    S2=np.tile(X2.max(axis=1),(n1,1))
+    S3=np.tile(X1.max(axis=1),(n2,1)).T
+    S4=np.tile(X2.min(axis=1),(n1,1))
+    return S1,S2,S3,S4
+
+def _rectangle_intersection_(x1,y1,x2,y2):
+    S1,S2,S3,S4=_rect_inter_inner(x1,x2)
+    S5,S6,S7,S8=_rect_inter_inner(y1,y2)
 
     C1=np.less_equal(S1,S2)
     C2=np.greater_equal(S3,S4)
