@@ -1,7 +1,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name="intersection",
+    name="intersect",
     version="1.0",
     packages=find_packages(),
     license="Private",

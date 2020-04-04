@@ -59,6 +59,11 @@ x,y=intersection(x1,y1,x2,y2)
     plt.show()
 
     """
+    x1 = np.asarray(x1)
+    x2 = np.asarray(x2)
+    y1 = np.asarray(y1)
+    y2 = np.asarray(y2)
+
     ii, jj = _rectangle_intersection_(x1, y1, x2, y2)
     n = len(ii)
 
@@ -82,7 +87,7 @@ x,y=intersection(x1,y1,x2,y2)
         try:
             T[:, i] = np.linalg.solve(AA[:, :, i], BB[:, i])
         except:
-            T[:, i] = np.NaN
+            T[:, i] = np.Inf
 
     in_range = (T[0, :] >= 0) & (T[1, :] >= 0) & (
         T[0, :] <= 1) & (T[1, :] <= 1)
