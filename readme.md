@@ -9,6 +9,8 @@ Inspired from [this](http://uk.mathworks.com/matlabcentral/fileexchange/11837-fa
 ## Example usage
 
 ```python
+from intersect import intersection
+
 a, b = 1, 2
 phi = np.linspace(3, 10, 100)
 x1 = a*phi - b*np.sin(phi)
