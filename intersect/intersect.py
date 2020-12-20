@@ -21,14 +21,18 @@ def _rect_inter_inner(x1, x2):
     return S1, S2, S3, S4
 
 
-def _rectangle_intersection_(x1, y1, x2, y2):
+def _rectangle_intersection_(x1, x2):
     S1, S2, S3, S4 = _rect_inter_inner(x1, x2)
-    S5, S6, S7, S8 = _rect_inter_inner(y1, y2)
 
     C1 = np.less_equal(S1, S2)
     C2 = np.greater_equal(S3, S4)
-    C3 = np.less_equal(S5, S6)
-    C4 = np.greater_equal(S7, S8)
+
+    return C1, C2
+
+
+def _rectangle_intersection_check_(x1, y1, x2, y2):
+    C1, C2 = _rectangle_intersection_(x1, x2)
+    C3, C4 = _rectangle_intersection_(y1, y2)
 
     ii, jj = np.nonzero(C1 & C2 & C3 & C4)
     return ii, jj
@@ -64,7 +68,7 @@ x,y=intersection(x1,y1,x2,y2)
     y1 = np.asarray(y1)
     y2 = np.asarray(y2)
 
-    ii, jj = _rectangle_intersection_(x1, y1, x2, y2)
+    ii, jj = _rectangle_intersection_check_(x1, y1, x2, y2)
     n = len(ii)
 
     dxy1 = np.diff(np.c_[x1, y1], axis=0)
@@ -92,10 +96,14 @@ x,y=intersection(x1,y1,x2,y2)
     in_range = (T[0, :] >= 0) & (T[1, :] >= 0) & (
         T[0, :] <= 1) & (T[1, :] <= 1)
 
+    # get indexes of intersecting elements
+    ij0 = [ii[in_range], jj[in_range]] + T[:2, in_range]
+    ij0 = ij0.T
+    # get coordinates of intersecting elements
     xy0 = T[2:, in_range]
     xy0 = xy0.T
-    return xy0[:, 0], xy0[:, 1]
 
+    return xy0[:, 0], xy0[:, 1], ij0[:, 0], ij0[:, 1]
 
 if __name__ == '__main__':
     import matplotlib.pyplot as plt
@@ -107,7 +115,8 @@ if __name__ == '__main__':
 
     x2 = phi
     y2 = np.sin(phi)+2
-    x, y = intersection(x1, y1, x2, y2)
+    x, y, i, j = intersection(x1, y1, x2, y2)
+    print(f"curves intersect at elements {i, j}, corresponding to coordinates {x,y}")
     plt.plot(x1, y1, c='r')
     plt.plot(x2, y2, c='g')
     plt.plot(x, y, '*k')
