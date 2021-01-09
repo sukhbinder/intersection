@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="intersect",
-    version="1.0",
+    version="1.01",
     packages=find_packages(),
     description="Intersection Of two curves",
     author="sukhbinder",
