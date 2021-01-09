@@ -10,7 +10,7 @@ setup(
     author_email="sukh2010@yahoo.com",
     license='MIT',
     url = 'https://github.com/sukhbinder/intersection',
-    keywords = ["Intersection" "curves" numpy"],
+    keywords = ["Intersection", "curves", "numpy"],
     
     classifiers=[
     'Development Status :: 4- Beta',
