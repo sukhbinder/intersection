@@ -1,10 +1,19 @@
+import pathlib
 from setuptools import find_packages, setup
+
+
+HERE = pathlib.Path(__file__).parent
+
+# The text of the README file
+README = (HERE / "readme.md").read_text()
 
 setup(
     name="intersect",
-    version="1.01",
+    version="1.2",
     packages=find_packages(),
     description="Intersection Of two curves",
+    long_description=README,
+    long_description_content_type="text/markdown",
     author="sukhbinder",
     author_email="sukh2010@yahoo.com",
     license='MIT',
