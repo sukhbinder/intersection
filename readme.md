@@ -3,7 +3,7 @@
 Inspired from [this](http://uk.mathworks.com/matlabcentral/fileexchange/11837-fast-and-robust-curve-intersections) matlab implementation, wrote this python implementation of how to detect intersection of two curves.
 
 
-![image](https://github.com/sukhbinder/intersection/blob/master/images/curve_intersection_python.png)
+![image](https://raw.githubusercontent.com/sukhbinder/intersection/master/images/curve_intersection_python.png)
 
 
 ## Example usage
@@ -27,3 +27,15 @@ plt.show()
 
 
 ```
+
+## Install
+To install
+
+```bash
+
+pip install intersect
+
+```
+
+
+
