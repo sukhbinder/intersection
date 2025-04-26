@@ -18,8 +18,9 @@ y1 = a - b*np.cos(phi)
 
 x2 = phi
 y2 = np.sin(phi)+2
-x, y = intersection(x1, y1, x2, y2)
+x, y, i, j = intersection(x1, y1, x2, y2)
 
+print(f"curves intersect at elements {i, j}, corresponding to coordinates {x,y}")
 plt.plot(x1, y1, c="r")
 plt.plot(x2, y2, c="g")
 plt.plot(x, y, "*k")
