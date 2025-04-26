@@ -9,7 +9,7 @@ README = (HERE / "readme.md").read_text()
 
 setup(
     name="intersect",
-    version="1.3",
+    version="1.3.1",
     packages=find_packages(),
     description="Intersection Of two curves",
     long_description=README,
