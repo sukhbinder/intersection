@@ -19,7 +19,7 @@ setup(
     license='MIT',
     url = 'https://github.com/sukhbinder/intersection',
     keywords = ["Intersection", "curves", "numpy"],
-    
+    install_requires=["numpy"],
     classifiers=[
     'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Developers',
