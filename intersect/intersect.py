@@ -91,7 +91,7 @@ x,y=intersection(x1,y1,x2,y2)
         try:
             T[:, i] = np.linalg.solve(AA[:, :, i], BB[:, i])
         except:
-            T[:, i] = np.Inf
+            T[:, i] = np.inf
 
     in_range = (T[0, :] >= 0) & (T[1, :] >= 0) & (
         T[0, :] <= 1) & (T[1, :] <= 1)
