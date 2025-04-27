@@ -5,7 +5,7 @@ from setuptools import find_packages, setup
 HERE = pathlib.Path(__file__).parent
 
 # The text of the README file
-README = (HERE / "README.md").read_text()
+long_description = pathlib.Path(__file__).parent.joinpath('README.md').read_text(encoding='utf-8')
 
 setup(
     name="intersect",

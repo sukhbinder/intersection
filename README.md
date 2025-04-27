@@ -1,4 +1,9 @@
 # Intersection Of two curves in Pure numpy
+[![PyPI](https://img.shields.io/pypi/v/intersection.svg)](https://pypi.org/project/intersection/)
+[![Changelog](https://img.shields.io/github/v/release/sukhbinder/intersection?include_prereleases&label=changelog)](https://github.com/sukhbinder/intersection/releases)
+[![Tests](https://github.com/sukhbinder/intersection/workflows/Test/badge.svg)](https://github.com/sukhbinder/intersection/actions?query=workflow%3ATest)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/sukhbinder/intersection/blob/main/LICENSE)
+
 
 Inspired from [this](http://uk.mathworks.com/matlabcentral/fileexchange/11837-fast-and-robust-curve-intersections) matlab implementation, wrote this python implementation of how to detect intersection of two curves.
 
@@ -37,6 +42,3 @@ To install
 pip install intersect
 
 ```
-
-
-
