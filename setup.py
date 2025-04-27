@@ -12,7 +12,7 @@ setup(
     version="1.3.2",
     packages=find_packages(),
     description="Intersection Of two curves",
-    long_description=README,
+    long_description=long_description,
     long_description_content_type="text/markdown",
     author="sukhbinder",
     author_email="sukh2010@yahoo.com",
